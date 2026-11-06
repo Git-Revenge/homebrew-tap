@@ -16,6 +16,10 @@ jobs:
           mkdir -p "$(dirname "$tap")"
           ln -s "$GITHUB_WORKSPACE" "$tap"
       - run: brew style --cask git-revenge/tap/gitrevenge
+      - name: Install before trusting the tap (what a new user sees)
+        continue-on-error: true
+        run: brew install --cask git-revenge/tap/gitrevenge && brew uninstall --cask gitrevenge
+      - run: brew trust git-revenge/tap
       - run: brew audit --cask --strict --online git-revenge/tap/gitrevenge
       - run: brew install --cask git-revenge/tap/gitrevenge
       - run: test -d "/Applications/Git Revenge.app"
