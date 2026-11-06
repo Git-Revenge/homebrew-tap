@@ -1,0 +1,22 @@
+name: Test cask
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Point Homebrew at this checkout
+        run: |
+          tap="$(brew --repository)/Library/Taps/git-revenge/homebrew-tap"
+          mkdir -p "$(dirname "$tap")"
+          ln -s "$GITHUB_WORKSPACE" "$tap"
+      - run: brew style --cask git-revenge/tap/gitrevenge
+      - run: brew audit --cask --strict --online git-revenge/tap/gitrevenge
+      - run: brew install --cask git-revenge/tap/gitrevenge
+      - run: test -d "/Applications/Git Revenge.app"
+      - run: brew uninstall --cask --zap git-revenge/tap/gitrevenge
