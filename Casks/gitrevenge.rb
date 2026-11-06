@@ -2,8 +2,7 @@ cask "gitrevenge" do
   version "0.9.1"
   sha256 "3ce6b2a334ded2a23af3b63da527bb76401064fae2486b4e8780b0679a731992"
 
-  url "https://github.com/Git-Revenge/GitRevenge/releases/download/v#{version}/GitRevenge-#{version}-macos-universal.dmg",
-      verified: "github.com/Git-Revenge/GitRevenge/"
+  url "https://github.com/Git-Revenge/GitRevenge/releases/download/v#{version}/GitRevenge-#{version}-macos-universal.dmg"
   name "Git Revenge"
   desc "Fast, local-only desktop git client for very large repositories"
   homepage "https://gitrevenge.com/"

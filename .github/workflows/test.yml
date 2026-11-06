@@ -8,6 +8,9 @@ on:
 jobs:
   test:
     runs-on: macos-latest
+    env:
+      # Online audit calls the GitHub API; unauthenticated, shared runners hit the 60/hour limit.
+      HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v5
       - name: Point Homebrew at this checkout
@@ -16,9 +19,7 @@ jobs:
           mkdir -p "$(dirname "$tap")"
           ln -s "$GITHUB_WORKSPACE" "$tap"
       - run: brew style --cask git-revenge/tap/gitrevenge
-      - name: Install before trusting the tap (what a new user sees)
-        continue-on-error: true
-        run: brew install --cask git-revenge/tap/gitrevenge && brew uninstall --cask gitrevenge
+      # A plain `brew install` trusts the cask it names; audit needs the tap trusted first.
       - run: brew trust git-revenge/tap
       - run: brew audit --cask --strict --online git-revenge/tap/gitrevenge
       - run: brew install --cask git-revenge/tap/gitrevenge
