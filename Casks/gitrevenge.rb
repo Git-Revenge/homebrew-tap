@@ -13,6 +13,8 @@ cask "gitrevenge" do
     strategy :github_latest
   end
 
+  depends_on :macos
+
   app "Git Revenge.app"
 
   zap trash: [
