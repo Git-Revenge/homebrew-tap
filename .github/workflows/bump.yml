@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   bump:
@@ -36,3 +37,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -am "gitrevenge $version"
           git push
+          # A push made with GITHUB_TOKEN doesn't trigger workflows, but a dispatch does.
+          gh workflow run test.yml --ref main
