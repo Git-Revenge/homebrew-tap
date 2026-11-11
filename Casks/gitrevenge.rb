@@ -1,6 +1,6 @@
 cask "gitrevenge" do
-  version "0.10.0"
-  sha256 "e4a9dedc4e2b0d45a9aab4146e5ea2f665f5222bf23a04e7c9d0f6dfe93f76a0"
+  version "0.11.0"
+  sha256 "6ac7a110219c99ee361ed2ef62879aa4e06904f504df572ad11e0e5d232f65f6"
 
   url "https://github.com/Git-Revenge/GitRevenge/releases/download/v#{version}/GitRevenge-#{version}-macos-universal.dmg"
   name "Git Revenge"
