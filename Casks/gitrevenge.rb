@@ -18,10 +18,15 @@ cask "gitrevenge" do
 
   zap trash: [
     "~/Library/Application Support/GitRevenge",
+    "~/Library/Caches/com.gitrevenge.gitrevenge",
     "~/Library/Caches/com.risadams.gitrevenge",
+    "~/Library/HTTPStorages/com.gitrevenge.gitrevenge",
     "~/Library/HTTPStorages/com.risadams.gitrevenge",
+    "~/Library/Preferences/com.gitrevenge.gitrevenge.plist",
     "~/Library/Preferences/com.risadams.gitrevenge.plist",
+    "~/Library/Saved Application State/com.gitrevenge.gitrevenge.savedState",
     "~/Library/Saved Application State/com.risadams.gitrevenge.savedState",
+    "~/Library/WebKit/com.gitrevenge.gitrevenge",
     "~/Library/WebKit/com.risadams.gitrevenge",
   ]
 end
