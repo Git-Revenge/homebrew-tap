@@ -15,6 +15,11 @@ cask "gitrevenge" do
   depends_on :macos
 
   app "Git Revenge.app"
+  # The `gitrevenge` command for a terminal. It opens the app the way Finder does, so it
+  # returns at once and brings a running Git Revenge forward instead of starting another.
+  command_wrapper "gitrevenge",
+                  executable: "/usr/bin/open",
+                  args:       ["-a", "#{appdir}/Git Revenge.app", "--args"]
 
   zap trash: [
     "~/Library/Application Support/GitRevenge",
