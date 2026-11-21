@@ -17,15 +17,9 @@ cask "gitrevenge" do
   app "Git Revenge.app"
   # The `gitrevenge` command for a terminal. It opens the app the way Finder does, so it
   # returns at once and brings a running Git Revenge forward instead of starting another.
-  shimscript = "#{staged_path}/gitrevenge.wrapper.sh"
-  binary shimscript, target: "gitrevenge"
-
-  preflight do
-    File.write shimscript, <<~EOS
-      #!/bin/sh
-      exec /usr/bin/open -a '#{appdir}/Git Revenge.app' --args "$@"
-    EOS
-  end
+  command_wrapper "gitrevenge",
+                  executable: "/usr/bin/open",
+                  args:       ["-a", "#{appdir}/Git Revenge.app", "--args"]
 
   zap trash: [
     "~/Library/Application Support/GitRevenge",
