@@ -6,7 +6,8 @@ Install [Git Revenge](https://gitrevenge.com/) on macOS:
 brew install --cask git-revenge/tap/gitrevenge
 ```
 
-Update with `brew upgrade --cask gitrevenge`.
+Update with `brew upgrade --cask gitrevenge`. Installing also links a `gitrevenge` command,
+which opens the app from a terminal.
 
 The cask follows the latest stable release of
 [Git-Revenge/GitRevenge](https://github.com/Git-Revenge/GitRevenge/releases). Release
